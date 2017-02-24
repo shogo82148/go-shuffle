@@ -25,6 +25,25 @@ func TestShuffle(t *testing.T) {
 	}
 }
 
+func TestShuffleInt64Slice(t *testing.T) {
+	a := make([]int64, 20)
+	b := make([]int64, len(a))
+	for i := 0; i < len(a); i++ {
+		a[i] = int64(i)
+		b[i] = int64(i)
+	}
+
+	Int64s(a)
+	if reflect.DeepEqual(a, b) {
+		t.Errorf("%v has not been shuffled", a)
+	}
+
+	SortInt64s(a)
+	if !reflect.DeepEqual(a, b) {
+		t.Errorf("got %v\nwant %v", a, b)
+	}
+}
+
 func BenchmarkInts3(b *testing.B) {
 	a := make([]int, 3)
 	for n := b.N; n > 0; n-- {
