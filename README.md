@@ -1,6 +1,8 @@
 go-shuffle
 =====
 
+[![Build Status](https://travis-ci.org/shogo82148/go-shuffle.svg?branch=master)](https://travis-ci.org/shogo82148/go-shuffle)
+
 Package shuffle provides primitives for shuffling slices and user-defined collections.
 
 ``` go
