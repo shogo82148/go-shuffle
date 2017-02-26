@@ -7,7 +7,7 @@ import (
 	"sort"
 )
 
-// A type, typically a collection, that satisfies shuffle.Interface can be
+// Interface is a type, typically a collection, that satisfies shuffle.Interface can be
 // shuffled by the routines in this package.
 type Interface interface {
 	// Len is the number of elements in the collection.

@@ -43,17 +43,3 @@ func TestShuffleInt64Slice(t *testing.T) {
 		t.Errorf("got %v\nwant %v", a, b)
 	}
 }
-
-func BenchmarkInts3(b *testing.B) {
-	a := make([]int, 3)
-	for n := b.N; n > 0; n-- {
-		Ints(a)
-	}
-}
-
-func BenchmarkInts20(b *testing.B) {
-	a := make([]int, 20)
-	for n := b.N; n > 0; n-- {
-		Ints(a)
-	}
-}
