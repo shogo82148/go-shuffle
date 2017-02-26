@@ -75,23 +75,3 @@ func BenchmarkFloat64s(b *testing.B) {
 
 	}
 }
-
-func BenchmarkSlice(b *testing.B) {
-	for _, n := range []int{1, 10, 100, 1000, 10000} {
-
-		b.Run(fmt.Sprintf("slice %d", n), func(b *testing.B) {
-			a := make([]int, n)
-			for i := 0; i < b.N; i++ {
-				shuffle.Slice(a)
-			}
-		})
-
-		b.Run(fmt.Sprintf("ints %d", n), func(b *testing.B) {
-			a := make([]int, n)
-			for i := 0; i < b.N; i++ {
-				shuffle.Ints(a)
-			}
-		})
-
-	}
-}
