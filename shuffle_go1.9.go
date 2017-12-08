@@ -1,4 +1,4 @@
-//+build go1.10
+//+build !go1.10
 
 // Package shuffle provides primitives for shuffling slices and user-defined
 // collections.
@@ -11,7 +11,11 @@ import (
 
 // Shuffle shuffles Data.
 func Shuffle(data Interface) {
-	rand.Shuffle(data.Len(), data.Swap)
+	n := data.Len()
+	for i := n - 1; i >= 0; i-- {
+		j := rand.Intn(i + 1)
+		data.Swap(i, j)
+	}
 }
 
 // A Shuffler provides Shuffle
@@ -23,7 +27,11 @@ func New(src rand.Source) *Shuffler { return (*Shuffler)(rand.New(src)) }
 
 // Shuffle shuffles Data.
 func (s *Shuffler) Shuffle(data Interface) {
-	rand.Shuffle(data.Len(), data.Swap)
+	n := data.Len()
+	for i := n - 1; i >= 0; i-- {
+		j := (*rand.Rand)(s).Intn(i + 1)
+		data.Swap(i, j)
+	}
 }
 
 // Ints shuffles a slice of ints.
