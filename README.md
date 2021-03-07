@@ -1,11 +1,10 @@
-go-shuffle
-=====
+# go-shuffle
 
-[![Build Status](https://travis-ci.org/shogo82148/go-shuffle.svg?branch=master)](https://travis-ci.org/shogo82148/go-shuffle)
+[![test](https://github.com/shogo82148/go-shuffle/actions/workflows/test.yml/badge.svg)](https://github.com/shogo82148/go-shuffle/actions/workflows/test.yml)
 
 Package shuffle provides primitives for shuffling slices and user-defined collections.
 
-``` go
+```go
 import "github.com/shogo82148/go-shuffle"
 
 // Shuffle slice of int.
