@@ -1,11 +1,11 @@
-go-shuffle
-=====
+# go-shuffle
 
-[![Build Status](https://travis-ci.org/shogo82148/go-shuffle.svg?branch=master)](https://travis-ci.org/shogo82148/go-shuffle)
+[![test](https://github.com/shogo82148/go-shuffle/actions/workflows/test.yml/badge.svg)](https://github.com/shogo82148/go-shuffle/actions/workflows/test.yml)
+[![Go Reference](https://pkg.go.dev/badge/github.com/shogo82148/go-shuffle.svg)](https://pkg.go.dev/github.com/shogo82148/go-shuffle)
 
 Package shuffle provides primitives for shuffling slices and user-defined collections.
 
-``` go
+```go
 import "github.com/shogo82148/go-shuffle"
 
 // Shuffle slice of int.
@@ -31,7 +31,7 @@ shuffle.Slice(strings)
 shuffle.Slice(float64s)
 ```
 
-See [godoc](https://godoc.org/github.com/shogo82148/go-shuffle) for more information.
+See [godoc](https://pkg.go.dev/github.com/shogo82148/go-shuffle) for more information.
 
 # LICENSE
 
