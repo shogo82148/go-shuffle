@@ -16,7 +16,7 @@ func Slice(slice interface{}) {
 }
 
 // Slice shuffles the slice.
-func (s *Shuffler) Slice(slice Interface) {
+func (s *Shuffler) Slice(slice interface{}) {
 	rv := reflect.ValueOf(slice)
 	swap := reflect.Swapper(slice)
 	(*rand.Rand)(s).Shuffle(rv.Len(), swap)

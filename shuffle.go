@@ -3,14 +3,18 @@
 
 // Package shuffle provides primitives for shuffling slices and user-defined
 // collections.
+//
+// As of Go 1.10, the same functionality is now provided by package math/rand,
+// and those implementations should be preferred in new code.
 package shuffle
 
 import (
 	"math/rand"
-	"sort"
 )
 
 // Shuffle shuffles Data.
+//
+// As of Go 1.10, it just calls rand.Shuffle(data.Len(), data.Swap).
 func Shuffle(data Interface) {
 	rand.Shuffle(data.Len(), data.Swap)
 }
@@ -23,15 +27,29 @@ type Shuffler rand.Rand
 func New(src rand.Source) *Shuffler { return (*Shuffler)(rand.New(src)) }
 
 // Shuffle shuffles Data.
+//
+// As of Go 1.10, it just calls (*rand.Rand).Shuffle(data.Len(), data.Swap).
 func (s *Shuffler) Shuffle(data Interface) {
-	rand.Shuffle(data.Len(), data.Swap)
+	(*rand.Rand)(s).Shuffle(data.Len(), data.Swap)
 }
 
 // Ints shuffles a slice of ints.
-func (s *Shuffler) Ints(a []int) { s.Shuffle(sort.IntSlice(a)) }
+//
+// As of Go 1.10, it just calls (*rand.Rand).Shuffle(len(a), func(i, j int) { a[i], a[j] = a[j], a[i]}).
+func (s *Shuffler) Ints(a []int) {
+	(*rand.Rand)(s).Shuffle(len(a), func(i, j int) { a[i], a[j] = a[j], a[i] })
+}
 
 // Float64s shuffles a slice of float64s.
-func (s *Shuffler) Float64s(a []float64) { s.Shuffle(sort.Float64Slice(a)) }
+//
+// As of Go 1.10, it just calls (*rand.Rand).Shuffle(len(a), func(i, j int) { a[i], a[j] = a[j], a[i]}).
+func (s *Shuffler) Float64s(a []float64) {
+	(*rand.Rand)(s).Shuffle(len(a), func(i, j int) { a[i], a[j] = a[j], a[i] })
+}
 
 // Strings shuffles a slice of strings.
-func (s *Shuffler) Strings(a []string) { s.Shuffle(sort.StringSlice(a)) }
+//
+// As of Go 1.10, it just calls (*rand.Rand).Shuffle(len(a), func(i, j int) { a[i], a[j] = a[j], a[i]}).
+func (s *Shuffler) Strings(a []string) {
+	(*rand.Rand)(s).Shuffle(len(a), func(i, j int) { a[i], a[j] = a[j], a[i] })
+}
