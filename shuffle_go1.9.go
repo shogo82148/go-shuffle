@@ -7,6 +7,7 @@ package shuffle
 
 import (
 	"math/rand"
+	"reflect"
 	"sort"
 )
 
