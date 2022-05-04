@@ -1,5 +1,3 @@
-//+build go1.7
-
 package shuffle_test
 
 import (
