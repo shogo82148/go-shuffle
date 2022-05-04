@@ -1,5 +1,3 @@
-//+build go1.8
-
 package shuffle
 
 import (
@@ -57,6 +55,7 @@ func BenchmarkStructs(b *testing.B) {
 
 		b.Run(fmt.Sprintf("shuffle %d", n), func(b *testing.B) {
 			a := make([]Struct, n)
+			_ = a[0].data
 			for i := 0; i < b.N; i++ {
 				Slice(a)
 			}
