@@ -1,5 +1,5 @@
-//go:build go1.10
-// +build go1.10
+//go:build go1.18
+// +build go1.18
 
 package shuffle
 
