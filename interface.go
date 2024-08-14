@@ -1,10 +1,7 @@
-//go:build go1.18
-// +build go1.18
-
 package shuffle
 
 import (
-	"math/rand"
+	"math/rand/v2"
 	"sort"
 )
 
@@ -41,7 +38,7 @@ func Strings(a []string) { shuffleSlice(a) }
 
 func shuffleSlice[T any](a []T) {
 	for i := len(a) - 1; i >= 0; i-- {
-		j := rand.Intn(i + 1)
+		j := rand.IntN(i + 1)
 		a[i], a[j] = a[j], a[i]
 	}
 }
