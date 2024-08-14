@@ -2,19 +2,12 @@ package shuffle
 
 import (
 	"math/rand/v2"
-	"reflect"
 )
 
 // Slice shuffles the slice.
-func Slice(slice interface{}) {
-	rv := reflect.ValueOf(slice)
-	swap := reflect.Swapper(slice)
-	rand.Shuffle(rv.Len(), swap)
-}
-
-// Slice shuffles the slice.
-func (s *Shuffler) Slice(slice interface{}) {
-	rv := reflect.ValueOf(slice)
-	swap := reflect.Swapper(slice)
-	(*rand.Rand)(s).Shuffle(rv.Len(), swap)
+func Slice[T any](slice []T) {
+	for i := len(slice) - 1; i >= 0; i-- {
+		j := rand.IntN(i + 1)
+		slice[i], slice[j] = slice[j], slice[i]
+	}
 }
