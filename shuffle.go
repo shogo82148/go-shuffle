@@ -34,24 +34,18 @@ func (s *Shuffler) Shuffle(data Interface) {
 }
 
 // Ints shuffles a slice of ints.
-//
-// As of Go 1.10, it just calls (*rand.Rand).Shuffle(len(a), func(i, j int) { a[i], a[j] = a[j], a[i]}).
 func (s *Shuffler) Ints(a []int) {
 	shuffleGeneric((*rand.Rand)(s), a)
 }
 
 // Float64s shuffles a slice of float64s.
-//
-// As of Go 1.10, it just calls (*rand.Rand).Shuffle(len(a), func(i, j int) { a[i], a[j] = a[j], a[i]}).
 func (s *Shuffler) Float64s(a []float64) {
-	(*rand.Rand)(s).Shuffle(len(a), func(i, j int) { a[i], a[j] = a[j], a[i] })
+	shuffleGeneric((*rand.Rand)(s), a)
 }
 
 // Strings shuffles a slice of strings.
-//
-// As of Go 1.10, it just calls (*rand.Rand).Shuffle(len(a), func(i, j int) { a[i], a[j] = a[j], a[i]}).
 func (s *Shuffler) Strings(a []string) {
-	(*rand.Rand)(s).Shuffle(len(a), func(i, j int) { a[i], a[j] = a[j], a[i] })
+	shuffleGeneric((*rand.Rand)(s), a)
 }
 
 func shuffleGeneric[T any](r *rand.Rand, a []T) {
