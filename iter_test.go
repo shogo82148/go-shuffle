@@ -5,7 +5,7 @@ package shuffle_test
 import (
 	"fmt"
 
-	"github.com/shogo82148/go-shuffle"
+	"github.com/shogo82148/go-shuffle/v2"
 )
 
 func ExampleIter() {
