@@ -5,7 +5,7 @@ import (
 	"math/rand/v2"
 	"testing"
 
-	"github.com/shogo82148/go-shuffle"
+	"github.com/shogo82148/go-shuffle/v2"
 )
 
 func ExampleInts() {
