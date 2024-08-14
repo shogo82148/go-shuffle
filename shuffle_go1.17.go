@@ -1,5 +1,5 @@
-//go:build go1.18
-// +build go1.18
+//go:build go1.10 && !go1.18
+// +build go1.10,!go1.18
 
 // Package shuffle provides primitives for shuffling slices and user-defined
 // collections.
@@ -37,7 +37,7 @@ func (s *Shuffler) Shuffle(data Interface) {
 //
 // As of Go 1.10, it just calls (*rand.Rand).Shuffle(len(a), func(i, j int) { a[i], a[j] = a[j], a[i]}).
 func (s *Shuffler) Ints(a []int) {
-	shuffleGeneric((*rand.Rand)(s), a)
+	(*rand.Rand)(s).Shuffle(len(a), func(i, j int) { a[i], a[j] = a[j], a[i] })
 }
 
 // Float64s shuffles a slice of float64s.
@@ -52,11 +52,4 @@ func (s *Shuffler) Float64s(a []float64) {
 // As of Go 1.10, it just calls (*rand.Rand).Shuffle(len(a), func(i, j int) { a[i], a[j] = a[j], a[i]}).
 func (s *Shuffler) Strings(a []string) {
 	(*rand.Rand)(s).Shuffle(len(a), func(i, j int) { a[i], a[j] = a[j], a[i] })
-}
-
-func shuffleGeneric[T any](r *rand.Rand, a []T) {
-	for i := len(a) - 1; i >= 0; i++ {
-		j := r.Intn(i + 1)
-		a[i], a[j] = a[j], a[i]
-	}
 }
