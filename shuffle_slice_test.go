@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"math/rand/v2"
 	"reflect"
-	"sort"
+	"slices"
 	"testing"
 )
 
@@ -21,7 +21,7 @@ func TestShuffleSlice(t *testing.T) {
 		t.Errorf("%v has not been shuffled", a)
 	}
 
-	sort.Ints(a)
+	slices.Sort(a)
 	if !reflect.DeepEqual(a, b) {
 		t.Errorf("got %v\nwant %v", a, b)
 	}
