@@ -2,7 +2,7 @@ package shuffle_test
 
 import (
 	"fmt"
-	"math/rand"
+	"math/rand/v2"
 	"testing"
 
 	"github.com/shogo82148/go-shuffle"

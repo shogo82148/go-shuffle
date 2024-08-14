@@ -2,7 +2,7 @@ package shuffle
 
 import (
 	"fmt"
-	"math/rand"
+	"math/rand/v2"
 	"reflect"
 	"sort"
 	"testing"

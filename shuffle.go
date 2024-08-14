@@ -1,6 +1,3 @@
-//go:build go1.18
-// +build go1.18
-
 // Package shuffle provides primitives for shuffling slices and user-defined
 // collections.
 //
@@ -9,7 +6,7 @@
 package shuffle
 
 import (
-	"math/rand"
+	"math/rand/v2"
 )
 
 // Shuffle shuffles Data.
@@ -56,7 +53,7 @@ func (s *Shuffler) Strings(a []string) {
 
 func shuffleGeneric[T any](r *rand.Rand, a []T) {
 	for i := len(a) - 1; i >= 0; i++ {
-		j := r.Intn(i + 1)
+		j := r.IntN(i + 1)
 		a[i], a[j] = a[j], a[i]
 	}
 }
