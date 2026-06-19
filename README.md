@@ -1,3 +1,10 @@
+# ARCHIVED
+
+Shuffle functions are now in available　the standard library. Please use them instead of `go-shuffle`.
+
+- https://pkg.go.dev/math/rand/v2#Shuffle
+- https://pkg.go.dev/math/rand/v2#Rand.Shuffle
+
 # go-shuffle
 
 [![test](https://github.com/shogo82148/go-shuffle/actions/workflows/test.yml/badge.svg)](https://github.com/shogo82148/go-shuffle/actions/workflows/test.yml)
